@@ -22,3 +22,9 @@ DATABASE_PORT=3306
 ```
 
 NOTE: The .env file on your computer will NOT be committed to VCS. We all get our own .env as does the AWS envionment.
+
+## Install All Required Packages
+
+From the root of this project in a Terminal prompt (Command-Line Interface, i.e., "CLI"):
+
+```$ pip install -r requirements.txt --ignore-installed```
