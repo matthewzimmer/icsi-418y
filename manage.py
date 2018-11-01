@@ -1,6 +1,9 @@
 #!/usr/bin/env python
+from dotenv import load_dotenv
 import os
 import sys
+
+load_dotenv(verbose=True)
 
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scrapd.settings')
