@@ -28,3 +28,12 @@ NOTE: The .env file on your computer will NOT be committed to VCS. We all get ou
 From the root of this project in a Terminal prompt (Command-Line Interface, i.e., "CLI"):
 
 ```$ pip install -r requirements.txt --ignore-installed```
+
+
+## Run Migrations
+
+```$ python manage.py migrate```
+
+## Check Django Config
+
+```$ python manage.py check```
