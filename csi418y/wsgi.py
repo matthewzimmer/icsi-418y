@@ -1,5 +1,5 @@
 """
-WSGI config for scrapd project.
+WSGI config for csi418y project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -14,6 +14,6 @@ from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scrapd.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'csi418y.settings')
 
 application = get_wsgi_application()

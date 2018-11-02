@@ -6,7 +6,7 @@ import sys
 load_dotenv(verbose=True)
 
 if __name__ == '__main__':
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scrapd.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'csi418y.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

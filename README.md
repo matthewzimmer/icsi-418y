@@ -14,7 +14,7 @@ https://gearheart.io/blog/how-to-deploy-django-app-with-aws-elastic-beanstalk/
 Create a .env file at the root of this project and paste the following lines:
 
 ```
-DATABASE_NAME=nascrapd
+DATABASE_NAME=csi418y
 DATABASE_USER=root
 DATABASE_PASSWORD=
 DATABASE_HOST=127.0.0.1
