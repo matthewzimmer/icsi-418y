@@ -110,3 +110,6 @@ venv.bak/
 
 #IntelliJ
 .idea
+
+#Apple
+.DS_Store

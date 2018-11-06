@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class User(models.Model):
     id = models.IntegerField(
         max_length=30, primary_key=True, null=False)
