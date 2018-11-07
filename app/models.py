@@ -20,12 +20,13 @@ class User(models.Model):
 
 
 class ScrapeRequest(models.Model):
-    id = models.IntegerField(
-        max_length=30, primary_key=True, null=False)
-    user_id = models.ForeignKey(
-        User.id, null=False)
+    id = models.IntegerField(max_length=30, primary_key=True, null=False)
+    user_id = models.ForeignKey(User, null=False, on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     scraped_at = models.DateTimeField(blank=True)
+
+    class Meta:
+        db_table = "app_scrape_requests"
 
 
 class Symbol(models.Model):
@@ -34,14 +35,18 @@ class Symbol(models.Model):
     name = models.CharField(max_length=5, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
+    class Meta:
+        db_table = "app_symbols"
+
 
 class ScrapeResult(models.Model):
     id = models.IntegerField(
         max_length=30, primary_key=True, null=False)
     posted_at = models.DateTimeField()
     article = models.TextField(null=False)
-    symbol_id = models.ForeignKey(
-        Symbol.id, null=False)
+    symbol_id = models.ForeignKey(Symbol, null=False, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
-    scrape_request_id = models.ForeignKey(
-        ScrapeRequest.id, null=False)
+    scrape_request_id = models.ForeignKey(ScrapeRequest, null=False, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "app_scrape_results"
