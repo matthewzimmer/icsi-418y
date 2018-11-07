@@ -26,7 +26,10 @@ SECRET_KEY = 'j!4vfe!-o+95z++_w789b+$-!2-rn-adn9esdphcx*7)c9i7z%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["scrapd.us-east-1.elasticbeanstalk.com"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "scrapd.us-east-1.elasticbeanstalk.com"
+]
 
 
 # Application definition
