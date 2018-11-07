@@ -1,11 +1,13 @@
 language: python
 python:
-  - "3.6"
+  "3.6"
 services:
   mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS csi418y;'
+  mysql -e 'CREATE DATABASE IF NOT EXISTS csi418y;' -u root
 install:
   pip install -r requirements.txt
+env:
+  -DJANGO=2.1.2 DB=mysql
 script:
-  ./manage.py test
+  python manage.py test
