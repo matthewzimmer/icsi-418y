@@ -36,6 +36,13 @@ From the root of this project in a Terminal prompt (Command-Line Interface, i.e.
 
 ```$ python manage.py migrate```
 
+## Making Migrations
+
+```$ python manage.py makemigrations```
+
 ## Check Django Config
 
 ```$ python manage.py check```
+
+## Running Tests
+```$ python manage.py test```
