@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class User(models.Model):
     id = models.IntegerField(
         max_length=30, primary_key=True, null=False)
@@ -36,3 +35,4 @@ class ScrapeResult(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     scrape_request_id = models.ForeignKey(
         ScrapeRequest.id, null=False)
+    
