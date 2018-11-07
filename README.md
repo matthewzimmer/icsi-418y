@@ -1,6 +1,8 @@
 # icsi-418y
 Unambiguous Unicorns
 
+[![Build Status](https://travis-ci.com/matthewzimmer/icsi-418y.svg?token=i6DMr7AwFhJzsWtwz8NY&branch=master)](https://travis-ci.com/matthewzimmer/icsi-418y)
+
 ## Tutorial Used as Inspiration
 
 https://gearheart.io/blog/how-to-deploy-django-app-with-aws-elastic-beanstalk/
