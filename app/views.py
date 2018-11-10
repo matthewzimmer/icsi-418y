@@ -7,12 +7,12 @@ def index(request):
 
 
 def login(request):
-    return HttpResponse("TODO: Implement LOGIN UI.")
+    return render(request, 'login.html')
 
 
 def search(request):
-    return HttpResponse("TODO: Implement SEARCH UI.")
+    return render(request, 'search.html')
 
 
 def results(request):
-    return HttpResponse("TODO: Implement SEARCH RESULTS UI.")
+    return render(request, 'results.html')
