@@ -1,6 +1,8 @@
 # icsi-418y
 Unambiguous Unicorns
 
+[![Build Status](https://travis-ci.com/matthewzimmer/icsi-418y.svg?token=i6DMr7AwFhJzsWtwz8NY&branch=master)](https://travis-ci.com/matthewzimmer/icsi-418y)
+
 ## Tutorial Used as Inspiration
 
 https://gearheart.io/blog/how-to-deploy-django-app-with-aws-elastic-beanstalk/
@@ -34,6 +36,13 @@ From the root of this project in a Terminal prompt (Command-Line Interface, i.e.
 
 ```$ python manage.py migrate```
 
+## Making Migrations
+
+```$ python manage.py makemigrations```
+
 ## Check Django Config
 
 ```$ python manage.py check```
+
+## Running Tests
+```$ python manage.py test```

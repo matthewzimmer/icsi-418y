@@ -107,3 +107,12 @@ venv.bak/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+#IntelliJ
+.idea
+
+#Apple
+.DS_Store
+
+# Visual Studio Code
+.vscode

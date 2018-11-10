@@ -1,0 +1,13 @@
+language: python
+python:
+  "3.6"
+services:
+  mysql
+before_install:
+  mysql -e 'CREATE DATABASE IF NOT EXISTS csi418y;' -u root
+install:
+  pip install -r requirements.txt
+env:
+  - DJANGO=2.1.2 DB=mysql DATABASE_NAME=csi418y DATABASE_USER=root DATABASE_PASSWORD= DATABASE_HOST=127.0.0.1 DATABASE_PORT=3306
+script:
+  python manage.py test
