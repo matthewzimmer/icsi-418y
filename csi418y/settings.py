@@ -35,6 +35,9 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/search/'
+
 INSTALLED_APPS = [
     'app.apps.AppConfig',
     'django.contrib.admin',
