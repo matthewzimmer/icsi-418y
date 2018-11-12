@@ -1,3 +1,8 @@
+## Unambiguous Unicorns Final Project
+
+
+[![Build Status](https://travis-ci.com/matthewzimmer/icsi-418y.svg?token=i6DMr7AwFhJzsWtwz8NY&branch=master)](https://travis-ci.com/matthewzimmer/icsi-418y)
+
     ICSI-418 Software Engineering
     Fall 2018 Semester Project
     Due December 14, 2018
