@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <strong>TODO: Implement LOGIN UI.</strong>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+{% endblock %}

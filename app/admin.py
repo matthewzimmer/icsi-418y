@@ -1,7 +1,6 @@
 from django.contrib import admin
+from .models import Symbol, ScrapeRequest, ScrapeResult
 
-from django.contrib import admin
-
-from .models import Question
-
-admin.site.register(Question)
+admin.site.register(Symbol)
+admin.site.register(ScrapeRequest)
+admin.site.register(ScrapeResult)
