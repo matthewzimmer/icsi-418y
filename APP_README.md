@@ -48,6 +48,14 @@ From the root of this project in a Terminal prompt (Command-Line Interface, i.e.
 ```$ python manage.py test```
 
 
+## cd to the django app on AWS once sshed
+
+```
+$ eb ssh
+$ cd /opt/python/current/app
+```
+
+
 ## ssh to MySQL in AWS
 
 ```$ mysql -h aa1kr6e0tk96fn8.cfmc7gg03dsl.us-east-1.rds.amazonaws.com -P 3306 -u unicorn -p```
