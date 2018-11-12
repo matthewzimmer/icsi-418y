@@ -46,3 +46,8 @@ From the root of this project in a Terminal prompt (Command-Line Interface, i.e.
 
 ## Running Tests
 ```$ python manage.py test```
+
+
+## ssh to MySQL in AWS
+
+```$ mysql -h aa1kr6e0tk96fn8.cfmc7gg03dsl.us-east-1.rds.amazonaws.com -P 3306 -u unicorn -p```
