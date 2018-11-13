@@ -1,16 +1,7 @@
+from django.utils import timezone
+
 from django.db import models
 from django.contrib.auth.models import User
-
-
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
 
 
 class Symbol(models.Model):
@@ -29,10 +20,15 @@ class ScrapeRequest(models.Model):
     id = models.AutoField(primary_key=True, null=False)
     user = models.ForeignKey(User, null=False, on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
-    scraped_at = models.DateTimeField(blank=True)
+    scraped_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return "Requested by {0} at {1}".format(self.user.email, self.created_at)
+
+    def scrape_did_complete(self):
+        if self.scraped_at is None:
+            self.scraped_at = timezone.now()
+            self.save()
 
     class Meta:
         verbose_name_plural = "Scrape Requests"
@@ -41,11 +37,12 @@ class ScrapeRequest(models.Model):
 
 class ScrapeResult(models.Model):
     id = models.AutoField(primary_key=True, null=False)
-    posted_at = models.DateTimeField()
-    article = models.TextField(null=False)
+    scrape_request = models.ForeignKey(ScrapeRequest, null=False, on_delete=models.CASCADE)
     symbol = models.ForeignKey(Symbol, null=False, on_delete=models.CASCADE)
+    headline = models.TextField(null=False)
+    article = models.TextField(null=False)
+    posted_at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True, null=False)
-    scrape_request_id = models.ForeignKey(ScrapeRequest, null=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return "[{0}] {1}".format(self.symbol.name, self.article[0:-1])
