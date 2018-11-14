@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search</title>
-</head>
-<body>
-    <strong>TODO: Implement SEARCH UI.</strong>
+    <style>
+	.container-fluid-search {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-left: auto;
+}
+    </style>
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+  	<div class="container-fluid-search">
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<div class="input-append" align="right" >
+				<button type="submit" class="btn btn-primary">Aquire</button>
+				</div>
+			</div>
+
+		    <form>
+		    	<div class="form-group">
+		    		<label for="inputSearchSymbol">Search Symbol</label>
+		    		<input type="text" class="form-control">
+		    	</div>
+		    	<div class="form-group">
+		    		<label for="searchByStartDate">Search By Start Date</label>
+		    		<input type="text" class="form-control">
+		    	</div>
+		    	<div class="form-group">
+		    		<label for="searchByEndDate">Search By End Date</label>
+		    		<input type="text" class="form-control">
+		    	</div>
+		    	<a href="http://scrapd.us-east-1.elasticbeanstalk.com/results/" class="btn btn-default btn-lg" role="button">Submit</a>
+		    </form>
+	    </div>
+	</div>
+
+
+{% endblock %}
 </body>
 </html>
