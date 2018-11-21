@@ -1,45 +1,63 @@
-    <style>
-	.container-fluid-search {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-left: auto;
-}
-    </style>
-
 {% extends 'layout.html' %}
+
+{% block page_title %}
+    Search
+{% endblock %}
 
 {% block content %}
 
-  	<div class="container-fluid-search">
-		<div class="jumbotron">
-			<div class="container-fluid">
-				<div class="input-append" align="right" >
-				<button type="submit" class="btn btn-primary">Aquire</button>
-				</div>
-			</div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Search Scrape Results</h4>
+                    <p class="card-category">Analyze your most important scrape results by entering one or more search criteria.</p>
+                </div>
+                <div class="card-body">
+                    <form method="get" action="{% url 'results' %}">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Symbols (comma-separated)</label>
+                                    <input type="text" name="symbols" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Start Date</label>
+                                    <input type="text" name="symbols" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">End Date</label>
+                                    <input type="text" name="symbols" class="form-control">
+                                </div>
+                            </div>
+                        </div>
 
-		    <form>
-		    	<div class="form-group">
-		    		<label for="inputSearchSymbol">Search Symbol</label>
-		    		<input type="text" class="form-control">
-		    	</div>
-		    	<div class="form-group">
-		    		<label for="searchByStartDate">Search By Start Date</label>
-		    		<input type="text" class="form-control">
-		    	</div>
-		    	<div class="form-group">
-		    		<label for="searchByEndDate">Search By End Date</label>
-		    		<input type="text" class="form-control">
-		    	</div>
-		    	<a href="http://scrapd.us-east-1.elasticbeanstalk.com/results/" class="btn btn-default btn-lg" role="button">Submit</a>
-		    </form>
-	    </div>
-	</div>
 
+                        <button type="submit" class="btn btn-primary pull-right">Search</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-profile">
+                <div class="card-body">
+                    <h6 class="card-category">Action Center</h6>
+                    <h4 class="card-title">Sync Latest Headlines</h4>
+                    <p class="card-description">
+                        Don't be scared of the truth because we need to restart the human foundation in truth And I love
+                        you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                    </p>
+                    <a href="#acquire" class="btn btn-primary btn-round">Acquire</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
-</body>
-</html>
