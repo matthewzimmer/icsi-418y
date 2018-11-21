@@ -1,10 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Results</title>
-</head>
-<body>
-    <strong>TODO: Implement RESULTS UI.</strong>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block page_title %}
+    Scrape Results
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Search Results</h4>
+                    <p class="card-category">Here are the latest results for your search criteria.</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Headline
+                            </th>
+                            <th>
+                                Article
+                            </th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Dakota Rice
+                                </td>
+                                <td>
+                                    Niger
+                                </td>
+                                <td>
+                                    Oud-Turnhout
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Minerva Hooper
+                                </td>
+                                <td>
+                                    Curaçao
+                                </td>
+                                <td>
+                                    Sinaai-Waas
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sage Rodriguez
+                                </td>
+                                <td>
+                                    Netherlands
+                                </td>
+                                <td>
+                                    Baileux
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Philip Chaney
+                                </td>
+                                <td>
+                                    Korea, South
+                                </td>
+                                <td>
+                                    Overland Park
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Doris Greene
+                                </td>
+                                <td>
+                                    Malawi
+                                </td>
+                                <td>
+                                    Feldkirchen in Kärnten
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mason Porter
+                                </td>
+                                <td>
+                                    Chile
+                                </td>
+                                <td>
+                                    Gloucester
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-info pull-right">Print PDF</button>
+                    <button type="submit" class="btn btn-info pull-right">Export CSV</button>
+
+                    <a href="javascript:window.history.back();" class="btn btn-primary pull-left">Search Again</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
