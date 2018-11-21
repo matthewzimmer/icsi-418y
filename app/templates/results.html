@@ -14,87 +14,25 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Headline
-                            </th>
-                            <th>
-                                Article
-                            </th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    Dakota Rice
-                                </td>
-                                <td>
-                                    Niger
-                                </td>
-                                <td>
-                                    Oud-Turnhout
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Minerva Hooper
-                                </td>
-                                <td>
-                                    Curaçao
-                                </td>
-                                <td>
-                                    Sinaai-Waas
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Sage Rodriguez
-                                </td>
-                                <td>
-                                    Netherlands
-                                </td>
-                                <td>
-                                    Baileux
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Philip Chaney
-                                </td>
-                                <td>
-                                    Korea, South
-                                </td>
-                                <td>
-                                    Overland Park
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Doris Greene
-                                </td>
-                                <td>
-                                    Malawi
-                                </td>
-                                <td>
-                                    Feldkirchen in Kärnten
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Mason Porter
-                                </td>
-                                <td>
-                                    Chile
-                                </td>
-                                <td>
-                                    Gloucester
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        {% if scrape_results|length > 0 %}
+                            <table class="table">
+                                <tbody>
+                                {% for result in scrape_results %}
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <h3>{{ result.headline }} <a class="btn btn-sm btn-default pull-right">{{ result.symbol.name }}</a></h3>
+                                            </strong>
+
+                                            <p>{{ result.article }}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>No Results Found for Search Criteria</p>
+                        {% endif %}
                     </div>
                     <button type="submit" class="btn btn-info pull-right">Print PDF</button>
                     <button type="submit" class="btn btn-info pull-right">Export CSV</button>
