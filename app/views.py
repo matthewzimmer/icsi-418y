@@ -34,5 +34,8 @@ def results(request):
     end_date = request.GET.get('end_date')
     symbols = Symbol.objects.filter(name__in=symbol_names.split(','))
     symbol_ids = symbols.values_list('id', flat=True)
-    scrape_results = ScrapeResult.objects.filter(symbol_id__in=symbol_ids)
+    if len(symbols) > 0:
+        scrape_results = ScrapeResult.objects.filter(symbol_id__in=symbol_ids)
+    else:
+        scrape_results = ScrapeResult.objects.all()
     return render(request, 'results.html', {'GET': request.GET, 'scrape_results': scrape_results})
