@@ -1,9 +1,15 @@
 import csv
+import io
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.pagesizes import landscape, A4
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import Table, Paragraph, TableStyle, SimpleDocTemplate
 
 from app.models import Symbol, ScrapeResult
 
@@ -55,9 +61,54 @@ def results(request):
 
     # PDF
     elif request.GET.get('format') == 'pdf':
-        response = HttpResponse("Coming Soon")
+        response = results_as_pdf(scrape_results)
 
     # HTML
     else:
         response = render(request, 'results.html', {'scrape_results': scrape_results})
+    return response
+
+
+def results_as_pdf(scrape_results):
+    buff = io.BytesIO()
+    doc = SimpleDocTemplate(buff, pagesize=A4, rightMargin=30, leftMargin=30, topMargin=30,
+                            bottomMargin=18)
+    doc.pagesize = landscape(A4)
+    elements = []
+
+    data = [
+        ['Posted At', 'Symbol', 'Headline', 'Article'],
+    ]
+    for result in scrape_results:
+        data.append([str(result.posted_at), result.symbol.name, result.headline, result.article])
+
+    style = TableStyle([('ALIGN', (1, 1), (-2, -2), 'RIGHT'),
+                        ('TEXTCOLOR', (1, 1), (-2, -2), colors.red),
+                        ('VALIGN', (0, 0), (0, -1), 'CENTER'),
+                        ('TEXTCOLOR', (0, 0), (0, -1), colors.blue),
+                        ('ALIGN', (0, -1), (-1, -1), 'CENTER'),
+                        ('VALIGN', (0, -1), (-1, -1), 'MIDDLE'),
+                        ('TEXTCOLOR', (0, -1), (-1, -1), colors.green),
+                        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.black),
+                        ('BOX', (0, 0), (-1, -1), 0.25, colors.black),
+                        ])
+
+    # Configure style and word wrap
+    s = getSampleStyleSheet()
+    s.add(ParagraphStyle(name='centered', alignment=TA_CENTER))
+    s = s["BodyText"]
+    s.wordWrap = 'CJK'
+    data2 = [[Paragraph(cell, s) for cell in row] for row in data]
+    t = Table(data2)
+    t.setStyle(style)
+
+    # Send the data and build the file
+    elements.append(t)
+    doc.build(elements)
+
+    response = HttpResponse(content_type='application/pdf')
+    pdf_name = "results.pdf"
+    response['Content-Disposition'] = 'attachment; filename=%s' % pdf_name
+    response.write(buff.getvalue())
+    buff.close()
     return response
