@@ -1,9 +1,10 @@
 import csv
 import io
+import random
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
@@ -34,6 +35,21 @@ def logout_view(request):
 @login_required
 def search(request):
     return render(request, 'search.html')
+
+
+@login_required
+def acquire(request):
+    if random.random() < .5:
+        data = {
+            'success': True,
+            'error': None
+        }
+    else:
+        data = {
+            'success': False,
+            'error': 'Failure occurred! Flipped a Tails!'
+        }
+    return JsonResponse(data)
 
 
 @login_required
