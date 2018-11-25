@@ -34,8 +34,8 @@
                             <p>No Results Found for Search Criteria</p>
                         {% endif %}
                     </div>
-                    <button type="submit" class="btn btn-info pull-right">Print PDF</button>
-                    <button type="submit" class="btn btn-info pull-right">Export CSV</button>
+                    <a href="{{ request.get_full_path }}&format=pdf" target="_blank" class="btn btn-info pull-right">Print PDF</a>
+                    <a href="{{ request.get_full_path }}&format=csv" target="_blank" class="btn btn-info pull-right">Export CSV</a>
 
                     <a href="javascript:window.history.back();" class="btn btn-primary pull-left">Search Again</a>
                     <div class="clearfix"></div>

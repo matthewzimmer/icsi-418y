@@ -1,5 +1,8 @@
+import csv
+
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from app.models import Symbol, ScrapeResult
@@ -38,4 +41,23 @@ def results(request):
         scrape_results = ScrapeResult.objects.filter(symbol_id__in=symbol_ids)
     else:
         scrape_results = ScrapeResult.objects.all()
-    return render(request, 'results.html', {'GET': request.GET, 'scrape_results': scrape_results})
+    scrape_results = scrape_results.order_by('-posted_at')
+
+    # CSV
+    if request.GET.get('format') == 'csv':
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="results.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['Posted At', 'Symbol', 'Headline', 'Article'])
+        for result in scrape_results:
+            writer.writerow([result.posted_at, result.symbol.name, result.headline, result.article])
+
+    # PDF
+    elif request.GET.get('format') == 'pdf':
+        response = HttpResponse("Coming Soon")
+
+    # HTML
+    else:
+        response = render(request, 'results.html', {'scrape_results': scrape_results})
+    return response
