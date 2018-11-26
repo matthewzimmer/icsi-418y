@@ -1,3 +1,4 @@
+
 {% extends 'layout.html' %}
 
 {% block page_title %}
@@ -5,6 +6,8 @@
 {% endblock %}
 
 {% block content %}
+
+
 
     <div class="row">
         <div class="col-md-8">
@@ -23,23 +26,47 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" style="position: absolute;z-index:1000;">
+
                                     <label class="bmd-label-floating">Start Date</label>
-                                    <input type="text" name="start_date" class="form-control">
+                                    <input id="from" type="text" name ="start_date" class="form-control">
+
                                 </div>
                             </div>
+
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" style="position: absolute;z-index:1000;">
                                     <label class="bmd-label-floating">End Date</label>
-                                    <input type="text" name="end_date" class="form-control">
+                                    <input id="to" type="text" name="end_date" class="form-control" >
+
                                 </div>
                             </div>
                         </div>
 
+                        <script>
+                                var $j = jQuery.noConflict();
+                                 $j( "#to" ).datepicker(
+                                     {dateFormat: "yy-mm-dd"}
+                                 ).attr('readonly', 'true');
 
-                        <button type="submit" class="btn btn-primary pull-right">Search</button>
+                                 var $k = jQuery.noConflict();
+                                 $k( "#from" ).datepicker(
+                                     {dateFormat: "yy-mm-dd"}
+                                 ).attr('readonly', 'true');
+
+                                 let to = document.getElementById("to");
+                                to.style.background='rgba(255, 255, 255, 0)';
+                                to.style.background='rgba(255, 255, 255, 0)';
+
+                                let from = document.getElementById("from");
+                                from.style.background='rgba(255, 255, 255, 0)';
+                                from.style.background='rgba(255, 255, 255, 0)';
+                        </script>
+
+                        <button type="submit" type="date" class="btn btn-primary pull-right">Search</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>
