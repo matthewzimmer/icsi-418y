@@ -39,6 +39,10 @@ def search(request):
 
 @login_required
 def acquire(request):
+    # TODO First, look for an existing ScrapeRequest object for the current user with a NULL scraped_at
+    # TODO If not found, create a new ScrapeRequest object (persist to the database!)
+    # TODO Feed the ScrapeRequest object into the Scraper service...and wait till it's done
+    # TODO Return a message to the user informing them of the # of new scrape results available
     if random.random() < .5:
         data = {
             'success': True,
