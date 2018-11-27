@@ -77,12 +77,11 @@ def results(request):
     symbol_names = request.GET.get('symbols')
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
-    symbols = Symbol.objects.filter(name__in=symbol_names.split(','))
+    symbols = Symbol.objects.filter(user=request.user)
+    if len(symbol_names) > 0:
+        symbols = symbols.filter(name__in=symbol_names.split(','))
     symbol_ids = symbols.values_list('id', flat=True)
-    if len(symbols) > 0:
-        scrape_results = ScrapeResult.objects.filter(symbol_id__in=symbol_ids)
-    else:
-        scrape_results = ScrapeResult.objects.all()
+    scrape_results = ScrapeResult.objects.filter(symbol_id__in=symbol_ids)
     scrape_results = scrape_results.order_by('-posted_at')
 
     # CSV
