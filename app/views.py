@@ -84,10 +84,7 @@ def results(request):
         symbols = Symbol.objects.all()
     symbol_ids = symbols.values_list('id', flat=True)
 
-    scrape_requests = ScrapeRequest.objects.filter(user=request.user)
-    scrape_request_ids = scrape_requests.values_list('id', flat=True)
-
-    scrape_results = ScrapeResult.objects.filter(scrape_request_id__in=scrape_request_ids)
+    scrape_results = ScrapeResult.objects.filter(user=request.user)
     scrape_results = scrape_results.filter(symbol_id__in=symbol_ids)
     scrape_results = scrape_results.order_by('-posted_at')
 
