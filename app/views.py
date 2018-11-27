@@ -58,17 +58,11 @@ def acquire(request):
         scrape_results=service.scrape_results,
     )
     # Return a message to the user informing them of the # of new scrape results available
-    if random.random() < .5:
-        data = {
-            'success': True,
-            'message': '{0} new results scraped.'.format(len(service.scrape_results)),
-            'error': None
-        }
-    else:
-        data = {
-            'success': False,
-            'error': 'Failure occurred! Flipped a Tails!'
-        }
+    data = {
+        'success': True,
+        'message': '{0} new results scraped.'.format(len(service.scrape_results)),
+        'error': None
+    }
     return JsonResponse(data)
 
 
