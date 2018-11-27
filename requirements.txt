@@ -1,5 +1,6 @@
 awsebcli==3.14.6
 beautifulsoup4==4.6.3
+bs4==0.0.1
 botocore==1.12.3
 cement==2.8.2
 certifi==2018.10.15
@@ -16,6 +17,7 @@ python-dotenv==0.9.1
 pytz==2018.5
 PyYAML==3.13
 reportlab==3.5.11
+requests==2.20.1
 semantic-version==2.5.0
 six==1.11.0
 termcolor==1.1.0

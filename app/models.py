@@ -43,6 +43,7 @@ class ScrapeResult(models.Model):
     headline = models.TextField(null=False)
     article = models.TextField(null=False)
     posted_at = models.DateTimeField()
+    link = models.TextField(null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self):
