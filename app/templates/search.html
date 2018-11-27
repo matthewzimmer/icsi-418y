@@ -54,7 +54,7 @@
                         Don't be scared of the truth because we need to restart the human foundation in truth And I love
                         you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                     </p>
-                    <a href="#acquire" id="btn_acquire" class="btn btn-sm btn-info btn-round">Acquire</a>
+                    <a href="#acquire" id="btn_acquire" class="btn btn-sm btn-info btn-round" onclick="button_switch()">Acquire</a>
                 </div>
             </div>
         </div>
@@ -74,17 +74,28 @@
                         debugger
                         if(result.success) {
                             alert(result.message||'Success');
+                            button_reset();
                         } else {
                             alert(result.error||'An error occurred. Please try again.');
+                            button_reset();
                         }
                     },
                     error: function(result) {
                         alert('error');
+                        button_reset();
                     }
                 });
             });
           })
         })
+
+        function button_switch(){
+            document.getElementById("btn_acquire").innerText="Acquiring...";
+        }
+
+        function button_reset(){
+            document.getElementById("btn_acquire").innerText="Acquire";
+        }
     </script>
 
 {% endblock %}
