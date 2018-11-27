@@ -37,6 +37,7 @@ class ScrapeRequest(models.Model):
 
 class ScrapeResult(models.Model):
     id = models.AutoField(primary_key=True, null=False)
+    user = models.ForeignKey(User, null=False, on_delete=models.DO_NOTHING)
     scrape_request = models.ForeignKey(ScrapeRequest, null=False, on_delete=models.CASCADE)
     symbol = models.ForeignKey(Symbol, null=False, on_delete=models.CASCADE)
     headline = models.TextField(null=False)
