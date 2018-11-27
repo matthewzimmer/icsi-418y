@@ -71,8 +71,9 @@
                     data: {
                     },
                     success: function(result) {
+                        debugger
                         if(result.success) {
-                            alert('Success');
+                            alert(result.message||'Success');
                         } else {
                             alert(result.error||'An error occurred. Please try again.');
                         }
