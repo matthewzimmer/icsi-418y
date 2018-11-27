@@ -53,14 +53,14 @@ def acquire(request):
     # Feed the ScrapeRequest object into the Scraper service...and wait till it's done
     service = AcquireScrapeResults.execute(scrape_request=scrape_request)
     # Persist scrape results from Scraper service
-    PersistScrapeResults.execute(
+    persist_service = PersistScrapeResults.execute(
         scrape_request=scrape_request,
         scrape_results=service.scrape_results,
     )
     # Return a message to the user informing them of the # of new scrape results available
     data = {
         'success': True,
-        'message': '{0} new results scraped.'.format(len(service.scrape_results)),
+        'message': '{0} new results scraped.'.format(len(persist_service.created_results)),
         'error': None
     }
     return JsonResponse(data)

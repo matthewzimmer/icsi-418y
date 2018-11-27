@@ -153,6 +153,7 @@ class PersistScrapeResults(Service):
                     headline=result.headline,
                     posted_at=result.posted_at,
                 )
+                self.created_results.append(scrape_result)
             # Update the ScrapeResult
             scrape_result.article = result.article
             scrape_result.save()
