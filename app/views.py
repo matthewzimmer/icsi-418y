@@ -12,7 +12,8 @@ from reportlab.lib.pagesizes import landscape, A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import Table, Paragraph, TableStyle, SimpleDocTemplate
 
-from app.models import Symbol, ScrapeResult
+from app.models import Symbol, ScrapeResult, ScrapeRequest
+from app.services import AcquireScrapeResults, PersistScrapeResults
 
 
 @login_required
@@ -39,13 +40,28 @@ def search(request):
 
 @login_required
 def acquire(request):
-    # TODO First, look for an existing ScrapeRequest object for the current user with a NULL scraped_at
-    # TODO If not found, create a new ScrapeRequest object (persist to the database!)
-    # TODO Feed the ScrapeRequest object into the Scraper service...and wait till it's done
-    # TODO Return a message to the user informing them of the # of new scrape results available
+    # Look for an existing ScrapeRequest object for the current user
+    # with a NULL scraped_at.
+    scrape_request = ScrapeRequest.objects.filter(
+        user=request.user,
+        scraped_at=None
+    ).first()
+    # If not found, create a new ScrapeRequest object
+    # (persist to the database!)
+    if scrape_request is None:
+        scrape_request = ScrapeRequest.objects.create(user=request.user)
+    # Feed the ScrapeRequest object into the Scraper service...and wait till it's done
+    service = AcquireScrapeResults.execute(scrape_request=scrape_request)
+    # Persist scrape results from Scraper service
+    PersistScrapeResults.execute(
+        scrape_request=scrape_request,
+        scrape_results=service.scrape_results,
+    )
+    # Return a message to the user informing them of the # of new scrape results available
     if random.random() < .5:
         data = {
             'success': True,
+            'message': '{0} new results scraped.'.format(len(service.scrape_results)),
             'error': None
         }
     else:
