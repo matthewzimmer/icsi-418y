@@ -14,14 +14,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="{% static 'css/material-dashboard.css' %}?v=2.1.0" rel="stylesheet"/>
-
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <!--   Core JS Files   -->
+    <script src="{% static '/js/core/jquery.min.js' %}"></script>
+    <script src="{% static '/js/core/popper.min.js' %}"></script>
+    <script src="{% static '/js/core/bootstrap-material-design.min.js' %}"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="{% static '/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Chartist JS -->
+    <script src="{% static '/js/plugins/chartist.min.js' %}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{% static '/js/plugins/bootstrap-notify.js' %}"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static '/js/material-dashboard.js' %}?v=2.1.0"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-
 </head>
 <body class="dark-edition">
 <div class="wrapper">
@@ -117,31 +127,5 @@
         </footer>
     </div>
 </div>
-
-{#<div class="container">#}
-{#    <div class="row justify-content-center">#}
-{#        <div class="col-8">#}
-{#            <h1 class="mt-2 center">Unambiguous Unicorns Scraper Project</h1>#}
-{#            <hr class="mt-0 mb-4">#}
-{##}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
-<!--   Core JS Files   -->
-<script src="{% static '/js/core/jquery.min.js' %}"></script>
-<script src="{% static '/js/core/popper.min.js' %}"></script>
-<script src="{% static '/js/core/bootstrap-material-design.min.js' %}"></script>
-<script src="https://unpkg.com/default-passive-events"></script>
-<script src="{% static '/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Chartist JS -->
-<script src="{% static '/js/plugins/chartist.min.js' %}"></script>
-<!--  Notifications Plugin    -->
-<script src="{% static '/js/plugins/bootstrap-notify.js' %}"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{% static '/js/material-dashboard.js' %}?v=2.1.0"></script>
-
 </body>
 </html>

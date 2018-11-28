@@ -27,6 +27,10 @@ class ScrapeRequestTestCase(TestCase):
         scrape_request.scrape_did_complete()
         self.assertIsNotNone(scrape_request.scraped_at)
 
+    def test_existing_scrape_request_can_be_obtained(self):
+        scrape_request = ScrapeRequest.objects.filter(user=self.user, scraped_at=None).first()
+
+
 
 class ScrapeResultTestCase(TestCase):
     def setUp(self):
@@ -40,6 +44,7 @@ class ScrapeResultTestCase(TestCase):
 
         ScrapeResult.objects.create(
             headline=self.headline,
+            user=self.user,
             symbol=self.symbol,
             article=self.article,
             posted_at=timezone.now(),
@@ -48,6 +53,7 @@ class ScrapeResultTestCase(TestCase):
 
     def test_scrape_result_can_be_created(self):
         scrape_result = ScrapeResult.objects.filter(
+            user=self.user,
             symbol=self.symbol,
             scrape_request=self.scrape_request,
             headline=self.headline,

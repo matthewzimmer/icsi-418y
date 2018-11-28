@@ -37,11 +37,13 @@ class ScrapeRequest(models.Model):
 
 class ScrapeResult(models.Model):
     id = models.AutoField(primary_key=True, null=False)
+    user = models.ForeignKey(User, null=False, on_delete=models.DO_NOTHING)
     scrape_request = models.ForeignKey(ScrapeRequest, null=False, on_delete=models.CASCADE)
     symbol = models.ForeignKey(Symbol, null=False, on_delete=models.CASCADE)
     headline = models.TextField(null=False)
     article = models.TextField(null=False)
     posted_at = models.DateTimeField()
+    link = models.TextField(null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self):
