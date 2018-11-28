@@ -1,6 +1,5 @@
 import csv
 import io
-import random
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -11,10 +10,6 @@ from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import landscape, A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import Table, Paragraph, TableStyle, SimpleDocTemplate
-
-import datetime
-from django.core import validators
-from django import forms
 
 from app.models import Symbol, ScrapeResult, ScrapeRequest
 from app.services import AcquireScrapeResults, PersistScrapeResults
