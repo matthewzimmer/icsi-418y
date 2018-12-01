@@ -45,17 +45,20 @@ class PersistScrapeResults(Service):
         for result in self.scrape_results:
             # Look for existing scrape result based on uniqueness (what is that?)
             scrape_result = ScrapeResult.objects.filter(
+                user=self.scrape_request.user,
                 symbol=Symbol.objects.get_or_create(name=result['symbol'])[0],
                 headline=result['headline'],
                 posted_at=result['posted_at'],
             ).first()
             if scrape_result is None:
                 scrape_result = ScrapeResult.objects.create(
+                    user=self.scrape_request.user,
+                    scrape_request=self.scrape_request,
                     symbol=Symbol.objects.get_or_create(name=result['symbol'])[0],
                     headline=result['headline'],
                     posted_at=result['posted_at'],
-                    scrape_request=self.scrape_request,
                 )
             # Update the ScrapeResult
             scrape_result.article = result['article']
             scrape_result.save()
+        self.scrape_request.scrape_did_complete()
