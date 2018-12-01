@@ -51,10 +51,9 @@
                     <h6 class="card-category">Action Center</h6>
                     <h4 class="card-title">Sync Latest Headlines</h4>
                     <p class="card-description">
-                        Don't be scared of the truth because we need to restart the human foundation in truth And I love
-                        you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                        Get the latest news on stocks.
                     </p>
-                    <a href="#acquire" id="btn_acquire" class="btn btn-sm btn-info btn-round" onclick="button_switch()">Acquire</a>
+                    <a href="#acquire" id="btn_acquire" class="btn btn-danger btn-info btn-lg">Acquire</a>
                 </div>
             </div>
         </div>
@@ -64,6 +63,15 @@
         $(document).ready(function() {
           $().ready(function() {
             $("body").on("click", "#btn_acquire", function(e) {
+
+                $this = $(this);
+                $this.toggleClass("#btn_acquire")
+                if($this.hasClass("#btn_acquire")){
+                    $this.text("Acquiring...")
+                    $this.css("background-color","grey")
+                    $this.prop("disabled",true);
+                }
+
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
@@ -74,7 +82,8 @@
                         debugger
                         if(result.success) {
                             alert(result.message||'Success');
-                            button_reset();
+                            $this.text("Acquired")
+                            
                         } else {
                             alert(result.error||'An error occurred. Please try again.');
                             button_reset();
@@ -89,12 +98,16 @@
           })
         })
 
-        function button_switch(){
-            document.getElementById("btn_acquire").innerText="Acquiring...";
-        }
-
+        // function button_switch(btn){
+        //     document.getElementById(btn.id).innerText="Acquiring...";
+        //     document.getElementById(btn.id).disabled = true;
+        //     // document.getElementById("btn_acquire").setAttribute("disabled","disabled")
+        // }
+        
         function button_reset(){
             document.getElementById("btn_acquire").innerText="Acquire";
+            document.getElementById("btn_acquire").style.backgroundColor = '#F00';
+            document.getElementById("btn_acquire").disabled=false;
         }
     </script>
 
