@@ -44,6 +44,7 @@ class ScrapeResultTestCase(TestCase):
 
         ScrapeResult.objects.create(
             headline=self.headline,
+            user=self.user,
             symbol=self.symbol,
             article=self.article,
             posted_at=timezone.now(),
@@ -52,6 +53,7 @@ class ScrapeResultTestCase(TestCase):
 
     def test_scrape_result_can_be_created(self):
         scrape_result = ScrapeResult.objects.filter(
+            user=self.user,
             symbol=self.symbol,
             scrape_request=self.scrape_request,
             headline=self.headline,
