@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block page_title %}
-    Login
+    Scrapd Login
 {% endblock %}
 
 {% block content %}
@@ -19,29 +19,12 @@
         {% endif %}
     {% endif %}
 
-    {#<form method="post" action="{% url 'login' %}">#}
-    {#{% csrf_token %}#}
-    {#<table>#}
-    {#<tr>#}
-    {#    <td>{{ form.username.label_tag }}</td>#}
-    {#    <td>{{ form.username }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#    <td>{{ form.password.label_tag }}</td>#}
-    {#    <td>{{ form.password }}</td>#}
-    {#</tr>#}
-    {#</table>#}
-    {##}
-    {#<button type="submit" class="btn btn-success">Login</button>#}
-    {#<input type="hidden" name="next" value="{{ next }}">#}
-    {#</form>#}
-
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title">User Login</h4>
-                    <p class="card-category">Sign in to access the latest financial scrapes.</p>
+                    <h4 class="card-title">Login</h4>
+                    <p class="card-category">Sign in to access the Latest News from the Nasdaq Options Trading Center.</p>
                 </div>
                 <div class="card-body">
                     <form method="post" action="{% url 'login' %}">

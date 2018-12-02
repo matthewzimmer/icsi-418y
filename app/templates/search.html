@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block page_title %}
-    Search
+    Scrapd Search
 {% endblock %}
 
 {% block content %}
@@ -10,15 +10,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title">Search Scrape Results</h4>
-                    <p class="card-category">Analyze your most important scrape results by entering one or more search criteria.</p>
+                    <h4 class="card-title">Search Scrapd Results</h4>
+                    <p class="card-category">Analyze your most important headlines by entering one or more search criteria.</p>
                 </div>
                 <div class="card-body">
                     <form method="get" action="{% url 'results' %}">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Symbols (comma-separated)</label>
+                                    <label class="bmd-label-floating">Stock Symbols (comma-separated)</label>
                                     <input type="text" name="symbols" class="form-control">
                                 </div>
                             </div>
@@ -48,10 +48,10 @@
         <div class="col-md-4">
             <div class="card card-profile">
                 <div class="card-body">
-                    <h6 class="card-category">Action Center</h6>
+                    <h6 class="card-category">Nasdaq Options Trading Center</h6>
                     <h4 class="card-title">Sync Latest Headlines</h4>
                     <p class="card-description">
-                        Get the latest news on stocks.
+                        Get the latest news on notable and noteworthy options trading.
                     </p>
                     <a href="#acquire" id="btn_acquire" class="btn btn-danger btn-info btn-lg">Acquire</a>
                 </div>
