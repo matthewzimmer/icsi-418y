@@ -1,7 +1,8 @@
 import csv
+import datetime
 import io
-import random
 
+from dateutil.tz import tzutc
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
@@ -81,6 +82,22 @@ def results(request):
     scrape_results = ScrapeResult.objects.filter(user=request.user)
     scrape_results = scrape_results.filter(symbol_id__in=symbol_ids)
     scrape_results = scrape_results.order_by('-posted_at')
+
+    if start_date:
+        try:
+            dt = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+            start_date = datetime.datetime.combine(dt.date(), dt.time(), tzinfo=tzutc())
+            scrape_results = scrape_results.filter(posted_at__gte=start_date)
+        except:
+            pass
+
+    if end_date:
+        try:
+            dt = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+            end_date = datetime.datetime.combine(dt.date() + datetime.timedelta(days=1), dt.time(), tzinfo=tzutc())
+            scrape_results = scrape_results.filter(posted_at__lte=end_date)
+        except:
+            pass
 
     # CSV
     if request.GET.get('format') == 'csv':
