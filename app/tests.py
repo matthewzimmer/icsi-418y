@@ -31,7 +31,6 @@ class ScrapeRequestTestCase(TestCase):
         scrape_request = ScrapeRequest.objects.filter(user=self.user, scraped_at=None).first()
 
 
-
 class ScrapeResultTestCase(TestCase):
     def setUp(self):
         self.symbol_name = 'GE'

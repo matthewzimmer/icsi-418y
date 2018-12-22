@@ -26,7 +26,7 @@
                                         <td>
                                             <h3>
                                                 <strong>{{ result.headline }}</strong>
-                                                <span class="badge badge-secondary badge-pill pull-right">{{ result.symbol.name }}</span>
+                                                <a href="?symbols={{ result.symbol.name }}&start_date={{ start_date }}&end_date={{ end_date }}" class="badge badge-secondary badge-pill pull-right">{{ result.symbol.name }}</a>
                                             </h3>
                                             <h6><strong>{{ result.posted_at }}</strong></h6>
                                             <p>{{ result.article|cleansify }}</p>

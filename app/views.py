@@ -115,7 +115,14 @@ def results(request):
 
     # HTML
     else:
-        response = render(request, 'results.html', {'scrape_results': scrape_results})
+        response = render(
+            request,
+            'results.html', {
+                'scrape_results': scrape_results,
+                'start_date': request.GET.get('start_date'),
+                'end_date': request.GET.get('end_date'),
+            },
+        )
     return response
 
 
