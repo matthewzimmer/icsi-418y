@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+: "${ANACONDA_ENV:=icsi418y}"
+source activate $ANACONDA_ENV
+
+python manage.py $1
